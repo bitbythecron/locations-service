@@ -1,0 +1,80 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
+    }
+}
+
+plugins {
+    id 'groovy'
+}
+
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+configurations {
+    dev
+}
+
+ext['javax-validation.version'] = '2.0.1.Final'
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+
+    compile(
+        'org.codehaus.groovy:groovy-all:2.4.12'
+        ,'com.google.inject:guice:4.1.0'
+        ,'ch.qos.logback:logback-classic:1.2.3'
+        ,'org.slf4j:jul-to-slf4j:1.7.25'
+        ,'org.apache.logging.log4j:log4j-to-slf4j:2.9.1'
+        ,'commons-cli:commons-cli:1.4'
+        ,'org.apache.commons:commons-lang3:3.7'
+        ,'io.dropwizard.metrics:metrics-core:3.2.5'
+        ,'io.dropwizard.metrics:metrics-json:3.2.5'
+        ,'org.springframework.security:spring-security-jwt:1.0.9.RELEASE'
+        ,'org.springframework.security.oauth:spring-security-oauth2:2.2.1.RELEASE'
+        ,'io.jsonwebtoken:jjwt:0.9.0'
+        ,'org.hibernate:hibernate-validator:6.0.7.Final'
+        ,'commons-io:commons-io:2.6'
+        ,'mysql:mysql-connector-java:6.0.6'
+        ,'org.springframework.boot:spring-boot-starter-jetty'
+        ,'org.springframework.boot:spring-boot-starter-actuator'
+        ,'org.springframework.boot:spring-boot-starter-security'
+        ,'org.springframework.boot:spring-boot-starter-data-rest'
+        ,'org.springframework.boot:spring-boot-starter-data-jpa'
+        ,'org.apache.commons:commons-text:1.2'
+        ,'org.liquibase:liquibase-core:3.5.5'
+    )
+
+    dev('org.springframework.boot:spring-boot-devtools')
+
+    testCompile(
+        'org.spockframework:spock-core:1.0-groovy-2.4'
+        ,'junit:junit:4.12'
+    )
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+String wsBaseName = 'locations-service'
+String wsVersion =  '1.0.0'
+
+jar {
+    baseName = wsBaseName
+    version =  wsVersion
+}
+
+bootRun {
+    if(project.hasProperty('debugMode')) {
+        jvmArgs = [ "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005" ]
+    }
+
+    classpath = sourceSets.main.runtimeClasspath + configurations.dev
+}
