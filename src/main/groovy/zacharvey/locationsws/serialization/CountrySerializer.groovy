@@ -11,7 +11,7 @@ class CountrySerializer extends JsonSerializer<Country> {
     void serialize(Country country, JsonGenerator jsonGenerator, SerializerProvider serializers) throws IOException, JsonProcessingException {
         jsonGenerator.writeStartObject()
 
-        jsonGenerator.writeStringField('id', country.refId)
+        jsonGenerator.writeNumberField('id', country.id)
         jsonGenerator.writeStringField('name', country.name)
         jsonGenerator.writeStringField('code', country.code)
 

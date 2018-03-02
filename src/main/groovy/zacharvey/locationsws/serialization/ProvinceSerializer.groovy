@@ -11,7 +11,7 @@ class ProvinceSerializer extends JsonSerializer<Province> {
     void serialize(Province province, JsonGenerator jsonGenerator, SerializerProvider serializers) throws IOException, JsonProcessingException {
         jsonGenerator.writeStartObject()
 
-        jsonGenerator.writeStringField('id', province.refId)
+        jsonGenerator.writeNumberField('id', province.id)
         jsonGenerator.writeStringField('name', province.name)
         jsonGenerator.writeStringField('code', province.code)
 

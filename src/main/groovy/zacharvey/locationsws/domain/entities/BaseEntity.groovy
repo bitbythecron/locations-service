@@ -19,6 +19,4 @@ abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id
-
-    String refId
 }

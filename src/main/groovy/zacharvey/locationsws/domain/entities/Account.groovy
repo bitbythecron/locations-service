@@ -17,8 +17,7 @@ import javax.validation.constraints.Size
 @Entity
 @Table(name = 'accounts')
 @AttributeOverrides([
-        @AttributeOverride(name = 'id', column=@Column(name='account_id')),
-        @AttributeOverride(name = 'refId', column=@Column(name='account_ref_id'))
+        @AttributeOverride(name = 'id', column=@Column(name='account_id'))
 ])
 class Account extends BaseEntity {
     @Column(name = 'account_email')

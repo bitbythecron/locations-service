@@ -23,7 +23,7 @@ class JwtAuthorizationFilter extends BasicAuthenticationFilter implements Securi
     UsernamePasswordAuthenticationTokenFactory tokenFactory
     ObjectMapper objectMapper
 
-    JwtAuthorizationFilter(LocationsWsProperties locationsWsProperties1,
+    JwtAuthorizationFilter(LocationsWsProperties locationsWsProperties,
                            UsernamePasswordAuthenticationTokenFactory tokenFactory, ObjectMapper objectMapper,
                            AuthenticationManager authenticationManager) {
         super(authenticationManager)

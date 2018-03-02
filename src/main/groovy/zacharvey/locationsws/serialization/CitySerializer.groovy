@@ -11,7 +11,7 @@ class CitySerializer extends JsonSerializer<City> {
     void serialize(City city, JsonGenerator jsonGenerator, SerializerProvider serializers) throws IOException, JsonProcessingException {
         jsonGenerator.writeStartObject()
 
-        jsonGenerator.writeStringField('id', city.refId)
+        jsonGenerator.writeNumberField('id', city.id)
         jsonGenerator.writeStringField('name', city.name)
 
         jsonGenerator.writeEndObject()

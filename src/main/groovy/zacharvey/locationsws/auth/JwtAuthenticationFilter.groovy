@@ -65,13 +65,13 @@ class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter imple
                 authentication = authenticationManager.authenticate(tokenFactory.createToken(account.email, signInRequest.password))
             }
         } catch(Throwable throwable) {
-            log.error("Authentication-related exception (${receipt}): ${throwable.class}: ${ExceptionUtils.getStackTrace(throwable)}")
-
             String receipt = UUID.randomUUID().toString()
             String reason = 'Authentication failed.'
             int errorStatus = HttpStatus.UNAUTHORIZED.value()
 
             ErrorResponse errorResponse = new ErrorResponse(receipt, reason)
+            log.error("Authentication-related exception (${receipt}): ${throwable.class}: ${ExceptionUtils.getStackTrace(throwable)}")
+
 
             response.setStatus(errorStatus)
             response.getWriter().write(objectMapper.writeValueAsString(errorResponse))

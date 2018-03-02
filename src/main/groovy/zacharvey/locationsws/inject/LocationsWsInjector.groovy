@@ -80,6 +80,11 @@ class LocationsWsInjector {
     }
 
     @Bean
+    AccountRepository accountRepository() {
+        new AccountRepository()
+    }
+
+    @Bean
     AccountService accountService(AccountRepository accountRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         new DefaultAccountService(accountRepository, bCryptPasswordEncoder)
     }
