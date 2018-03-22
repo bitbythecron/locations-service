@@ -65,11 +65,10 @@ dependencies {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 String wsBaseName = 'locations-service'
-String wsVersion =  '1.0.0'
 
 jar {
     baseName = wsBaseName
-    version =  wsVersion
+    version =  null
 }
 
 bootRun {

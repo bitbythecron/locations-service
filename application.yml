@@ -5,20 +5,20 @@ server:
   error:
     whitelabel:
       enabled: false
-  ssl:
-      key-store: 'locationsws.jks'
-      key-store-password: '123456'
-      key-password: '123456'
-spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2
-  datasource:
-    url: jdbc:h2:file:~/test
-    username: sa
-    password: 12345
-    driver-class-name: org.h2.Driver
+#  ssl:
+#      key-store: 'locationsws.jks'
+#      key-store-password: '123456'
+#      key-password: '123456'
+#spring:
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2
+#  datasource:
+#    url: jdbc:h2:file:~/test
+#    username: sa
+#    password: 12345
+#    driver-class-name: org.h2.Driver
 #  cache:
 #    type: none
 #  datasource:
